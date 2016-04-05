@@ -203,7 +203,6 @@ public class SelectAppActivity extends Activity{
     private MyAdapter adapter;
 
     private class MyAdapter extends BaseAdapter {
-
         @Override
         /**
          * 返回listview 的条目的个数
@@ -223,6 +222,7 @@ public class SelectAppActivity extends Activity{
             if(position<userAppList.size()){
                 infoBean = userAppList.get(position);
             }else{
+
                 // 应用信息，就从系统集合中获取
                 infoBean = sysAppList.get(position - userAppList.size());
             }
@@ -284,9 +284,9 @@ public class SelectAppActivity extends Activity{
             // 设置位置
 
             if(infoBean.isInSd){
-                vh.location.setText("在SD卡中");
+                vh.location.setText("sd卡");
             }else{
-                vh.location.setText("内部存储");
+                vh.location.setText("外部存储");
             }
 
             // 处理小标题：

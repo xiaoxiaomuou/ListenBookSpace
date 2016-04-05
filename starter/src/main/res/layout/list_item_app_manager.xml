@@ -22,8 +22,7 @@
             android:id="@+id/iv_icon_list_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:src="@mipmap/ic_launcher"/>
+            android:layout_centerVertical="true" />
 
         <TextView
             android:id="@+id/tv_name_list_item"
