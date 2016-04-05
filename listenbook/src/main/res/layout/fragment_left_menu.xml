@@ -1,0 +1,26 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFF5EE">
+
+    <ImageView
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/logo"
+        />
+
+    <ListView
+        android:divider="@drawable/list_divider"
+        android:dividerHeight="1dp"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/lv_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:listSelector="@android:color/transparent"
+        android:layout_marginTop="20dp" />
+
+</LinearLayout>

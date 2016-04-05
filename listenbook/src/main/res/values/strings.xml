@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ListenBook</string>
+    <string name="title_activity_main">书香校园1.0</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="contentfragment">我是主界面</string>
+    <string name="leftMenuFragment">我是侧滑栏菜单</string>
+    <string name="title_activity_splash">书香校园1.0</string>
+</resources>

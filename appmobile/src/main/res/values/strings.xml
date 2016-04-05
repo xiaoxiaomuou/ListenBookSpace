@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--<string name="app_name">军队听书馆</string>-->
+    <string name="app_name">书香校园</string>
+    <string name="app_name_file">listenBook</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+
+    <string name="main_collect">收藏</string>
+    <string name="main_book">书架</string>
+    <string name="main_mp3">听书</string>
+    <string name="main_download">下载</string>
+    <string name="scan_text">将二维码放入框内, 即可自动扫描</string>
+    <string name="books_null">书架里还没有书籍哦，赶快扫码下载吧</string>
+    <string name="collect_null">您还没有收藏书籍，赶快去收藏吧</string>
+    <string name="http_error">服务器请求失败，请检查网络</string>
+    <string name="er_code">二维码扫描下载</string>
+    <string name="about_us">关于</string>
+    <string name="update_res">更新资源</string>
+    <string name="btn_read">立即打开</string>
+    <string name="btn_collect">收藏</string>
+    <string name="btn_uncollect">取消收藏</string>
+    <string name="btn_copy">复制到SD卡</string>
+    <string name="btn_delete">删除</string>
+    <string name="btn_ercode">查看二维码</string>
+    <string name="btn_info">查看书籍信息</string>
+    <string name="book_info_name">名称：%1$s</string>
+    <string name="book_info_author">作者：%1$s</string>
+    <string name="book_info_isbn">ISBN：%1$s</string>
+    <string name="book_info_publish">出版社：%1$s</string>
+    <string name="book_info_update">更新日期：%1$s</string>
+    <string name="book_info_category">类别：%1$s</string>
+    
+    <string name="book_info_desc">简介：%1$s</string>
+    <string name="files_null">该书籍没有相应的文件</string>
+    <string name="btn_download">立即下载</string>
+    <string name="downloading">下载中···</string>
+    <string name="wait_downloading">等待下载</string>
+    <string name="download_fail">下载失败</string>
+    <string name="detail">详情</string>
+    <string name="saomiao_hint">使用手机APP扫码下载到手机</string>
+    <string name="get_app">版本更新</string>
+    <string name="voice">音量</string>
+    
+ <!-- pdf相关 -->   
+    <string name="accept">接受</string>
+	<string name="cancel">取消</string>
+	<string name="cannot_open_buffer">无法打开缓冲器</string>
+	<string name="cannot_open_document">无法打开文档</string>
+	<string name="cannot_open_document_Reason">无法打开文档： %1$s</string>
+	<string name="cannot_open_file_Path">无法打开文件：%1$s</string>
+	<string name="choose_value">选择值</string>
+	<string name="copied_to_clipboard">已复制到剪贴板</string>
+	<string name="copy">复制</string>
+	<string name="copy_text">复制文本</string>
+	<string name="copy_text_to_the_clipboard">将文本复制到剪贴板</string>
+	<string name="delete">删除</string>
+	<string name="dismiss">关闭</string>
+	<string name="document_has_changes_save_them_">文档已变更，保存变更吗？</string>
+	<string name="draw_annotation">作批注</string>
+	<string name="edit_annotations">编辑批注</string>
+	<string name="enter_password">输入密码</string>
+	<string name="entering_reflow_mode">输入重排模式</string>
+	<string name="fill_out_text_field">填充文本字段</string>
+	<string name="format_currently_not_supported">当前不支持此格式</string>
+	<string name="highlight">高亮</string>
+	<string name="ink">墨迹</string>
+	<string name="leaving_reflow_mode">正在离开重排模式</string>
+	<string name="more">更多</string>
+	<string name="no">否</string>
+	<string name="no_further_occurrences_found">未发现更多实例。</string>
+	<string name="no_media_hint">存储介质在设备和 PC 上共同使用，会导致该存储介质在设备上无法被访问</string>
+	<string name="no_media_warning">没有存储介质</string>
+	<string name="no_text_selected">未选择文本</string>
+	<string name="not_supported">不被支持</string>
+	<string name="nothing_to_save">没有要保存的内容</string>
+	<string name="okay">确定</string>
+	<string name="outline_title">目录</string>
+	<string name="parent_directory">[向上一级]</string>
+	<string name="picker_title_App_Ver_Dir">%1$s%2$s:%3$s</string>
+	<string name="print">打印</string>
+	<string name="print_failed">未能打印</string>
+	<string name="save">保存</string>
+	<string name="search">搜索</string>
+	<string name="search_backwards">向后搜索</string>
+	<string name="search_document">搜索文档</string>
+	<string name="search_forwards">向前搜索</string>
+	<string name="searching_">正在搜索…</string>
+	<string name="select">选择</string>
+	<string name="select_text">选择文本</string>
+	<string name="strike_out">删除线</string>
+	<string name="text_not_found">未发现文本</string>
+	<string name="toggle_links">高亮并启用墨迹</string>
+	<string name="underline">下划线</string>
+	<string name="yes">是</string>
+	<string name="toggle_reflow_mode">Toggle reflow mode</string>
+	<string name="version">1.0</string>
+	<string name="data_loading">正在请求数据，请稍后···</string>
+	<string name="download_dialog_msg">共有%1$s本书 %2$s个文件\n需要下载，是否开始下载？</string>
+	<string name="notice">提示</string>
+	<string name="image_loading">正在下载封面\n共  %1$s 张，已完成 %2$s 张  </string>
+	<string name="copy_loading">正在复制文件\n共  %1$s 个，已完成  %2$s 个  </string>
+	<string name="file_loading">正在下载文件\n共  %1$s 个，已完成 %2$s 个 </string>
+	<string name="loading_detail">正在下载第%1$s个  已完成 %2$s </string>
+	<string name="books_download_null">暂无下载项</string>
+	<!-- pdf结束 --> 
+	
+	<string name="progress_o">当前进度：20%</string> 
+	<string name="progress">当前进度：%s</string>
+
+	<string name="description">图片</string>
+</resources>

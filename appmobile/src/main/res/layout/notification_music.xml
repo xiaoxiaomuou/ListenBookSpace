@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/nfc_rl"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/nfc_iv_song_icon"
+        android:layout_width="@dimen/nfc_music_main_layout_height"
+        android:layout_height="@dimen/nfc_music_main_layout_height"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/description"
+        android:scaleType="fitCenter"
+        android:src="@drawable/sing_icon" />
+
+    <ImageView
+        android:id="@+id/nfc_iv_cancel"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="3dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginTop="1dp"
+        android:contentDescription="@string/description"
+        android:scaleType="centerCrop"
+        android:src="@drawable/nft_btn_cancel" />
+
+    <LinearLayout
+        android:id="@+id/nfc_ll_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="5dip"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/nfc_ibtn_prev"
+            style="@style/nfc_ibtn_style"
+            android:contentDescription="上一首"
+            android:src="@drawable/nfc_btn_pre_white" />
+
+        <ImageButton
+            android:id="@+id/nfc_ibtn_play"
+            style="@style/nfc_ibtn_style"
+            android:contentDescription="@string/description"/>
+
+        <ImageButton
+            android:id="@+id/nfc_ibtn_next"
+            style="@style/nfc_ibtn_style"
+            android:contentDescription="下一首"
+            android:src="@drawable/nfc_btn_next_white" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nfc_music_main_layout_height"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="5dip"
+        android:layout_marginLeft="5dip"
+        android:layout_marginTop="5dip"
+        android:layout_toLeftOf="@id/nfc_ll_button"
+        android:layout_toRightOf="@id/nfc_iv_song_icon"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/nfc_tv_song_singer"
+            style="@style/NotificationMusicTitle"
+            android:text="title" />
+
+        <TextView
+            android:id="@+id/nfc_tv_song_name"
+            style="@style/NotificationMusicContent"
+            android:layout_below="@id/nfc_tv_song_singer"
+            android:text="content" />
+    </RelativeLayout>
+
+</RelativeLayout>

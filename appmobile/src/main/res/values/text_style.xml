@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+     字体一览
+	cmTopTitle = 上导航字体
+	cmbottomTitle = 下导航字体
+	cmListTitle = list标题字体
+	cmListText = list正文字体
+	cmListCallout = list标注字体
+	cmTitle = 标题字体
+	cmText = 正文字体
+	cmEditText = 输入框字体
+    -->
+    <!-- 上导航字体的字体规范 -->
+    <style name="cmTopTitle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+    <!-- 下导航字体的字体规范 -->
+    <style name="cmbottomTitle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <!-- 标题字体的字体规范 -->
+    <style name="cmTitle">
+        <item name="android:textColor">@color/deep_gray</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <!-- 加粗标题字体的字体规范 -->
+    <style name="cmTitleBold">
+        <item name="android:textColor">@color/deep_gray</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <!-- 正文字体的字体规范 -->
+    <style name="cmText">
+        <item name="android:textColor">@color/light_gray</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+   
+    
+    <!-- 输入框字体的字体规范 -->
+    <style name="cmEditText">
+        <item name="android:textColor">@color/edit_text_color</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+    <!-- 登陆界面输入框字体的字体规范 -->
+    <style name="cmLoginEditText">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <!-- list标题字体的字体规范 -->
+    <style name="cmListTitle">
+        <item name="android:textColor">@color/list_title_text_color</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <!-- list正文字体的字体规范 -->
+    <style name="cmListText">
+        <item name="android:textColor">@color/list_content_text_color</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    
+    <!-- list标注字体(日期/时间/评论数/跟帖/文件大小/共几张/转自)的字体规范 -->
+    <style name="cmListCallout">
+        <item name="android:textColor">@color/list_callout_text_color</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <!-- 副标题字体（图片上覆盖文字/二级导航文字）的字体规范 -->
+    <style name="cmSubtitle">
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+</resources>

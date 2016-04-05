@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent">
+   <!-- android:background="@color/item_white"  --> 
+   <ProgressBar
+        android:id="@+id/progress_bar"
+        style="@style/ProgressBar_Mini"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:max="100"
+        android:minHeight="90dp"
+        android:progress="50"
+        android:background="@color/item_white"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_margin="10dp">
+        <ImageView
+            android:id="@+id/cover_iv"
+            android:layout_width="50dp"
+            android:layout_height="70dp"
+            android:layout_margin="10dp"
+            android:layout_centerVertical="true"
+            android:background="@color/red"/>
+        
+        <RelativeLayout 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/cover_iv"
+            android:layout_margin="10dp">
+             <RelativeLayout 
+                 android:id="@+id/right_layout"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true">
+		            <TextView
+		                android:id="@+id/status_tv"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:text="@string/downloading"
+		                android:paddingLeft="10dp"
+		                android:textColor="@color/white"
+		                android:textSize="14sp"
+		                android:drawableTop="@drawable/downloading"/>
+		            <TextView
+		                android:id="@+id/delete_tv"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:text="@string/delete"
+		                android:padding="10dp"
+		                android:textColor="@color/white"
+		                android:textSize="18sp"
+		                android:background="@color/red"
+		                android:visibility="gone"/>
+            </RelativeLayout>
+           <LinearLayout 
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_toLeftOf="@id/right_layout"
+	            android:orientation="vertical">
+            	<TextView
+            	    android:id="@+id/name_tv"
+            	    android:layout_width="match_parent"
+            	    android:layout_height="wrap_content"
+            	    android:text="人性的弱点"
+            	    android:singleLine="true"
+            	    android:ellipsize="end"
+            	    android:textColor="@color/white"
+            	    android:textSize="18sp"/>
+            	
+            	<LinearLayout 
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:orientation="horizontal">
+		            
+            	    <TextView
+	            	    android:id="@+id/down_number_tv"
+	            	    android:layout_width="wrap_content"
+	            	    android:layout_height="wrap_content"
+	            	    android:text="152 人下载"
+	            	    android:textColor="@color/white"
+	            	    android:textSize="14sp"
+	            	    android:visibility="gone"/>
+            	    
+            	    <TextView
+	            	    android:id="@+id/file_size_tv"
+	            	    android:layout_width="wrap_content"
+	            	    android:layout_height="wrap_content"
+	            	    android:layout_marginLeft="5dp"
+	            	    android:text=""
+	            	    android:textColor="@color/white"
+	            	    android:textSize="14sp"/>
+               </LinearLayout>
+               <TextView
+            	    android:id="@+id/desc_tv"
+            	    android:layout_width="match_parent"
+            	    android:layout_height="wrap_content"
+            	    android:text=""
+            	    android:singleLine="true"
+            	    android:ellipsize="end"
+            	    android:textColor="@color/white"
+            	    android:textSize="14sp"/>
+               
+            </LinearLayout>
+            
+        </RelativeLayout>
+        
+    </RelativeLayout>
+
+    
+
+</RelativeLayout>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+     android:gravity="center"
+    >
+  
+	 <LinearLayout 
+	        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+	      android:orientation="vertical" 
+	      android:paddingTop="10dp"
+	      android:paddingBottom="30dp"
+	      android:layout_marginLeft="30dp"
+	      android:layout_marginRight="30dp"
+	      android:background="@drawable/place_order_dialog_bg">
+	    <ProgressBar
+        android:id="@+id/progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminateDrawable="@drawable/my_progressbar"
+        android:visibility="visible"
+        android:layout_marginTop="15dp"
+         />
+	    <TextView
+         android:id="@+id/tip_tv"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="信息提交中"
+         android:layout_marginTop="10dp"
+         android:layout_gravity="center"
+         android:textColor="@color/black"
+         android:textSize="15sp" />
+	    
+	     <TextView
+         android:id="@+id/tip_tv_1"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text=""
+         android:layout_margin="10dp"
+         android:layout_gravity="center"
+         android:textColor="@color/black"
+         android:textSize="15sp"
+         android:visibility="gone" />
+	  <!--   
+	    <ProgressBar 
+        android:id="@+id/progress_bar"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+         style="?android:attr/progressBarStyleHorizontal"
+        android:minHeight="10dp"
+        android:maxHeight="10dp"
+        android:background="@color/progress_bg"
+        android:progress="0"
+        android:max="100"
+        android:progressDrawable="@drawable/download_progress"
+        android:visibility="gone"/>
+         -->
+	 </LinearLayout>
+ 
+</LinearLayout>

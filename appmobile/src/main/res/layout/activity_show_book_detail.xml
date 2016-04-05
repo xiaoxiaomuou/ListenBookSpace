@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="@color/main_bg">
+    
+    <include
+        android:id="@+id/top_layout" 
+        layout="@layout/title_layout"/>
+    
+    <RelativeLayout
+        android:id="@+id/info_layout"
+        android:layout_below="@id/top_layout"
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp">
+        
+        <ImageView
+            android:id="@+id/cover_iv"
+            android:layout_width="120dp"
+            android:layout_height="160dp"
+            android:layout_margin="10dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/main_default_img"/>
+        
+        <LinearLayout
+	        android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	android:layout_toRightOf="@id/cover_iv"
+        	android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+        	android:orientation="vertical">
+        	
+	        <TextView 
+	            android:id="@+id/name_tv"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:text="名称："
+	            android:textColor="@color/white"
+	            android:textSize="16sp"
+	            android:ellipsize="end"/>
+	        
+	        <TextView 
+	            android:id="@+id/author_tv"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:text="作者："
+	            android:textColor="@color/white"
+	            android:textSize="16sp"
+	            android:singleLine="true"
+	            android:ellipsize="end"/>
+	        <TextView 
+	            android:id="@+id/isbn_tv"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:text="ISBN:135893746984769134857"
+	            android:textColor="@color/white"
+	            android:textSize="16sp"
+	            android:singleLine="true"
+	            android:ellipsize="end"/>
+	        <TextView 
+	            android:id="@+id/publish_tv"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:text="出版社："
+	            android:textColor="@color/white"
+	            android:textSize="16sp"
+	            android:singleLine="true"
+	            android:ellipsize="end"/>
+	        <TextView 
+	            android:id="@+id/publish_time"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:text="出版日期："
+	            android:textColor="@color/white"
+	            android:textSize="16sp"
+	            android:singleLine="true"
+	            android:ellipsize="end"/>
+	        <TextView 
+	            android:id="@+id/category_tv"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:text="种类：科学"
+	            android:textColor="@color/white"
+	            android:textSize="16sp"
+	            android:singleLine="true"
+	            android:ellipsize="end"/>
+	        
+	    </LinearLayout>
+            
+        
+    </RelativeLayout>
+    
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@id/info_layout"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/white"/>
+    
+    <LinearLayout
+        android:id="@+id/image_layout"
+        android:layout_below="@id/info_layout"
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="20dp" >
+        
+        <LinearLayout
+            android:layout_width="0dp" 
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:orientation="vertical">
+            
+            <ImageView 
+	            android:id="@+id/ercode_iv"
+	            android:layout_width="match_parent"
+	            android:layout_height="100dp"
+	            android:gravity="center"/>
+            
+            <TextView 
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:gravity="center"
+	            android:paddingTop="10dp"
+	            android:textSize="16sp"
+	            android:text="@string/saomiao_hint"
+	            android:textColor="@color/white"/>
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="0dp" 
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:layout_gravity="center_vertical"
+	        android:orientation="vertical"
+	        android:gravity="center">
+            <ImageView
+                android:id= "@+id/download_btn"
+                android:layout_width="100dp"
+                android:layout_height="100dp" 
+                android:src="@drawable/copy_btn"
+                />
+            </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@id/image_layout"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/white"/>
+    <TextView
+        android:layout_below="@id/image_layout"
+        android:id="@+id/desc_tv"
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:textSize="16sp"
+        android:textColor="@color/white"/>
+    
+</RelativeLayout>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/page"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+	
+    
+    <ViewFlipper
+        android:id="@+id/MyFlipper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    </ViewFlipper>
+    <include
+        android:id="@+id/top_layout" 
+        layout="@layout/title_layout"
+        android:visibility="gone"/>
+</RelativeLayout>

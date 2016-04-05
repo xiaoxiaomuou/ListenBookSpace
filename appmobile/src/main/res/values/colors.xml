@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <drawable name="transp">#00000000</drawable>
+    <drawable name="bottom_tab_bg">#ffffff</drawable>
+    <color name="title_bg">#7808171b</color>
+    <color name="detail_color">#91595757</color>
+    <color name="black">#000000</color>
+    <color name="red">#ff0000</color>
+    <color name="white">#ffffff</color>
+    <color name="gray">#727171</color>
+    <color name="half_transparent">#b0000000</color>
+    <color name="deep_gray">#585858</color>
+	<color name="light_gray">#898989</color>
+	<color name="personal_gray">#bbbbbb</color>
+	<color name="green">#35b272</color>
+	
+	<color name="edit_text_color">#5b5b5b</color>
+	<color name="light_text_gray">#b5b5b5</color>
+	<color name="light_text_red">#e7413a</color>
+	<color name="title_gray">#df262626</color>
+	
+	<color name="transparent">#00000000</color>
+	
+	 <color name="result_view">#b0000000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+    <color name="popup_window_bg">#bbffffff</color>
+    
+    <color name="canvas">#404040</color>
+	<color name="toolbar">#C0000000</color>
+	<color name="page_indicator">#C0202020</color>
+	<color name="busy_indicator">#C0202020</color>
+	<color name="button_normal">#00000000</color>
+	<color name="button_pressed">#FF2572AC</color>
+	<color name="text_normal">#FFFFFF</color>
+	<color name="text_pressed">#FFFFFF</color>
+	<color name="text_border_normal">#000000</color>
+	<color name="text_border_pressed">#2572AC</color>
+	<color name="text_border_focused">#000000</color>
+	<color name="seek_thumb">#2572AC</color>
+	<color name="seek_progress">#FFFFFF</color>
+	<color name="download_progress_color">#9935b272</color>
+	<color name="download_progress_color_2">#996caeff</color>
+	<color name="item_white">#22ffffff</color>
+
+	<color name="main_bg">#2B313F</color>
+</resources>
