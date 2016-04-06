@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,7 +14,9 @@ import android.widget.ImageView;
 import android.view.View.OnClickListener;
 
 import net.aiweimob.www.starter.R;
+import net.aiweimob.www.starter.utils.MyConstace;
 import net.aiweimob.www.starter.utils.MyUtils;
+import net.aiweimob.www.starter.utils.PrefUtils;
 
 public class HomeActivity extends Activity {
 
@@ -38,6 +41,8 @@ public class HomeActivity extends Activity {
         ivShezhi = (ImageView) findViewById(R.id.iv_sz);
         gridView = (GridView) findViewById(R.id.gridView);
         et_text_pwd = (EditText) findViewById(R.id.et_input_pwd);
+
+        readSp();
     }
 
     public void ivClick(View view){
@@ -96,6 +101,13 @@ public class HomeActivity extends Activity {
         dialog.show();
     }
 
+    /**
+     * 读取程序包名的sp文件
+     */
+    public void readSp(){
+        String packageName = PrefUtils.getString(act, MyConstace.key_is_select_app, "竟然空");
+        Log.i("PackAge",packageName);
+    }
 
 }
 

@@ -2,13 +2,16 @@ package net.aiweimob.www.starter.activity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -18,11 +21,14 @@ import android.widget.TextView;
 import net.aiweimob.www.starter.R;
 import net.aiweimob.www.starter.bean.AppInfoBean;
 import net.aiweimob.www.starter.utils.AppUtils;
+import net.aiweimob.www.starter.utils.MyConstace;
+import net.aiweimob.www.starter.utils.PrefUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SelectAppActivity extends Activity{
+    public static final String SelectBaoming = "PackageName";
     private List<AppInfoBean> allAppList;
     /**
      * 用户应用集合
@@ -38,23 +44,9 @@ public class SelectAppActivity extends Activity{
     private CheckBox checkBox;
 
     /**
-     * 判断开关的打开状态
-     *
-     * @return true 打开
+     * selectFinish 选择完成的按钮
      */
-    public boolean isChecked() {
-        return checkBox.isChecked();
-    }
-
-    /**
-     * 设置开关状态
-     * @param check
-     */
-    public void setChecked(boolean check) {
-
-        checkBox.setChecked(check);
-
-    }
+    private Button btnFinish;
 
     /**
      * 固定的小标题
@@ -70,6 +62,8 @@ public class SelectAppActivity extends Activity{
         listView = (ListView) findViewById(R.id.listView);
 
         tvSubTitle = (TextView) findViewById(R.id.tv_sub_title);
+
+        btnFinish = (Button) findViewById(R.id.btn_finish);
 
         ctx = this;
 
@@ -98,6 +92,8 @@ public class SelectAppActivity extends Activity{
      * 点击条目的位置
      */
     private int clickedPosition;
+    //存放被点击应用的包名 的集合
+    List<String> listBaoming = new ArrayList<String>();
 
     private void regListener() {
 
@@ -115,7 +111,13 @@ public class SelectAppActivity extends Activity{
                 AppInfoBean bean = (AppInfoBean) listView.getItemAtPosition(position);
                 bean.isSelect = !bean.isSelect;
 
-              //  setChecked(bean.isSelect);
+                if(bean.isSelect){
+                    Log.i("Select",bean.packageName);
+                    listBaoming.add(bean.packageName);
+                }else{
+                    listBaoming.remove(bean.packageName);
+                    Log.i("Quxiao",bean.packageName);
+                }
 
                 //刷新页面
                 adapter.notifyDataSetChanged();
@@ -159,6 +161,42 @@ public class SelectAppActivity extends Activity{
             }
         });
 
+    }
+    /**
+     * 完成按钮的点击事件
+     */
+    public void selectFinish(View view){
+        /**
+         * 先清空原本的sp
+         */
+        PrefUtils.setString(ctx,MyConstace.key_is_select_app,"");
+
+        /**
+         * 保存选择的程序包名到sp
+         */
+        saveToSp();
+
+        /**
+         * 跳转到HomeActivity
+         */
+        Intent intent = new Intent(this,HomeActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * 把被选中的程序的包名 添加到sp文件中
+     */
+
+    private void saveToSp() {
+        String str = "";
+
+        for(int i = 0;i < listBaoming.size(); i ++){
+            str = str + listBaoming.get(i);
+            str += "$";
+            Log.i("For",str);
+        }
+        Log.i("SaveTo",str);
+        PrefUtils.setString(ctx, MyConstace.key_is_select_app, str);
     }
 
     private ProgressDialog proDlg;

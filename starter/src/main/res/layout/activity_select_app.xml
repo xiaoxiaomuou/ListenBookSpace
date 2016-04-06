@@ -6,15 +6,30 @@
     android:orientation="vertical"
     android:background="@mipmap/start1"
     >
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#FFFAF0"
-        android:gravity="center_vertical"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:text="请选择应用" />
+        android:layout_height="wrap_content"
+        android:background="#808080"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:text="请选择应用" />
+        <Button
+            android:id="@+id/btn_finish"
+            android:onClick="selectFinish"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:text="完成"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
+
+    </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
@@ -31,8 +46,8 @@
             android:background="#FFFAF0"
             android:textColor="#000000"
             android:padding="3dp"
-            android:text=""
-            android:textSize="18sp" />
+            android:text="应用类别"
+            android:textSize="16sp" />
 
     </RelativeLayout>
 
