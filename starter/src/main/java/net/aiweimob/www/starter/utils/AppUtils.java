@@ -80,7 +80,7 @@ public class AppUtils {
 
         }
 
-        SystemClock.sleep(300); // 模拟耗时的操作
+        SystemClock.sleep(30); // 模拟耗时的操作
 
         return appList;
     }

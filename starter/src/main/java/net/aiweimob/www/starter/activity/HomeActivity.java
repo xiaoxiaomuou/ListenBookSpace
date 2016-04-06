@@ -3,15 +3,22 @@ package net.aiweimob.www.starter.activity;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.view.View.OnClickListener;
+import android.widget.TextView;
 
 import net.aiweimob.www.starter.R;
 import net.aiweimob.www.starter.utils.MyConstace;
@@ -22,6 +29,11 @@ public class HomeActivity extends Activity {
 
     private static final String MyPwd = "jie";
 
+    /**
+     * 包的管理器 PackageManager;
+     */
+    PackageManager pm ;
+
     private ImageView ivShezhi;
 
     private GridView gridView;
@@ -29,6 +41,11 @@ public class HomeActivity extends Activity {
      * 声明一个对自已的引用，方便在内部类中使用activity
      */
     public Activity act;
+
+    /**
+     * 包名数组
+     */
+    String[] pageNames = new String[]{""};
 
     private EditText et_text_pwd;
     @Override
@@ -38,16 +55,101 @@ public class HomeActivity extends Activity {
 
         act = this;
 
+        pm = act.getPackageManager();//获得了包管理器
+
         ivShezhi = (ImageView) findViewById(R.id.iv_sz);
         gridView = (GridView) findViewById(R.id.gridView);
         et_text_pwd = (EditText) findViewById(R.id.et_input_pwd);
 
-        readSp();
+        pageNames = getPackageNames();
+
+        gridView = (GridView) findViewById(R.id.gridView);
+
+        adapter = new MyAdapter();
+        gridView.setAdapter(adapter);
+
+        //刷新页面
+        adapter.notifyDataSetChanged();
     }
 
     public void ivClick(View view){
 
         showInputPwdDialog();
+    }
+
+    /**
+     * 获取应用图标
+     */
+    public Drawable getAppIcon(String packname){
+        try {
+            ApplicationInfo info = pm.getApplicationInfo(packname,0);
+            return info.loadIcon(pm);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    /*
+     * 获取程序的名字
+     */
+    public String getAppName(String packname){
+        try {
+            ApplicationInfo info = pm.getApplicationInfo(packname, 0);
+            return info.loadLabel(pm).toString();
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    private MyAdapter adapter;
+    private class MyAdapter extends BaseAdapter{
+
+        @Override
+        /**
+         * 告诉系统，有多少个条目
+         */
+        public int getCount() {
+            int items = pageNames.length;
+            Log.i("getCount",items+"");
+            return items;
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        /**
+         * 根据 position 返回一个 对应的条目的view
+         * 该方法最少会调用 条目个数 次
+         */
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            View view = getLayoutInflater().inflate(R.layout.grid_item_home, null);
+
+            ImageView icon = (ImageView) view.findViewById(R.id.iv_grid_item);
+            TextView name = (TextView) view.findViewById(R.id.app_name_grid_item);
+            /**
+             * 应用程序的包名
+             */
+            String packname = pageNames[position];
+            /**
+             * 设置图标 和 应用名称
+             */
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                icon.setBackground(getAppIcon(packname));
+            }
+            name.setText(getAppName(packname));
+
+            return view;
+        }
     }
 
     private AlertDialog dialog;
@@ -102,11 +204,17 @@ public class HomeActivity extends Activity {
     }
 
     /**
-     * 读取程序包名的sp文件
+     * 得到 程序包名的数组
      */
-    public void readSp(){
+    private String[] getPackageNames(){
+        String[] names =  null;
         String packageName = PrefUtils.getString(act, MyConstace.key_is_select_app, "竟然空");
         Log.i("PackAge",packageName);
+
+        names = packageName.split("\\$");
+
+        Log.i("Packs",names.length+"");
+        return names;
     }
 
 }
