@@ -13,19 +13,21 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import net.aiweimob.www.starter.R;
 import net.aiweimob.www.starter.utils.MyConstace;
 import net.aiweimob.www.starter.utils.MyUtils;
 import net.aiweimob.www.starter.utils.PrefUtils;
 
-public class HomeActivity extends Activity {
+public class HomeActivity extends Activity implements AdapterView.OnItemClickListener {
 
     private static final String MyPwd = "jie";
 
@@ -70,6 +72,8 @@ public class HomeActivity extends Activity {
 
         //刷新页面
         adapter.notifyDataSetChanged();
+
+        gridView.setOnItemClickListener(this);
     }
 
     public void ivClick(View view){
@@ -102,7 +106,24 @@ public class HomeActivity extends Activity {
         }
     }
 
+    @Override
+    /**
+     * 响应gridView 条目点击事件
+     *
+     * @param position 点击的条目的下标
+     */
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        /**
+         * 得到点击的应用的包名
+         */
+        String packname = pageNames[position];
+        Log.i("position",packname+position);
+        
+        startAPP(packname);
+    }
+
     private MyAdapter adapter;
+
     private class MyAdapter extends BaseAdapter{
 
         @Override
@@ -213,8 +234,20 @@ public class HomeActivity extends Activity {
 
         names = packageName.split("\\$");
 
-        Log.i("Packs",names.length+"");
+        Log.i("Packs", names.length + "");
         return names;
+    }
+
+    /**
+     *通过包名 启动一个app
+     */
+    public void startAPP(String appPackageName){
+        try{
+            Intent intent = pm.getLaunchIntentForPackage(appPackageName);
+            startActivity(intent);
+        }catch(Exception e){
+            Toast.makeText(this, "还木有安装", Toast.LENGTH_LONG).show();
+        }
     }
 
 }
