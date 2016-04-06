@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.PopupWindow;
@@ -34,6 +35,26 @@ public class SelectAppActivity extends Activity{
     protected SelectAppActivity ctx;
 
     private ListView listView;
+    private CheckBox checkBox;
+
+    /**
+     * 判断开关的打开状态
+     *
+     * @return true 打开
+     */
+    public boolean isChecked() {
+        return checkBox.isChecked();
+    }
+
+    /**
+     * 设置开关状态
+     * @param check
+     */
+    public void setChecked(boolean check) {
+
+        checkBox.setChecked(check);
+
+    }
 
     /**
      * 固定的小标题
@@ -91,15 +112,13 @@ public class SelectAppActivity extends Activity{
              */
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
+                AppInfoBean bean = (AppInfoBean) listView.getItemAtPosition(position);
+                bean.isSelect = !bean.isSelect;
 
-//				Object item = listView.getItemAtPosition(position);
-//				System.out.println("item:"+item);
+              //  setChecked(bean.isSelect);
 
-                // 隐藏并销毁之前的popupWindow
-                dimissPopupWindow();
-
-                clickedPosition = position;
-
+                //刷新页面
+                adapter.notifyDataSetChanged();
 
             }
         });
@@ -250,8 +269,8 @@ public class SelectAppActivity extends Activity{
                 // 找到子view
                 ImageView icon = (ImageView) view.findViewById(R.id.iv_icon_list_item);
                 TextView name = (TextView) view.findViewById(R.id.tv_name_list_item);
+                CheckBox checkBox = (CheckBox) view.findViewById(R.id.check_box);
 
-                TextView location = (TextView) view.findViewById(R.id.tv_location_list_item);
                 TextView subTitle = (TextView) view.findViewById(R.id.tv_sub_title_list_item);
                 // 默认隐藏
                 subTitle.setVisibility(View.GONE);
@@ -259,8 +278,7 @@ public class SelectAppActivity extends Activity{
                 // 将子view打包
                 vh.icon = icon;
                 vh.name = name;
-
-                vh.location = location;
+                vh.checkBox = checkBox;
                 vh.subTitle = subTitle;
 
                 // 背包
@@ -272,22 +290,13 @@ public class SelectAppActivity extends Activity{
             }
 
             // 显示数据
-
             AppInfoBean infoBean  = (AppInfoBean) getItem(position);
-
 
             vh.icon.setBackgroundDrawable(infoBean.appIcon);
 
             vh.name.setText(infoBean.appName);
+            vh.checkBox.setChecked(infoBean.isSelect);
 
-
-            // 设置位置
-
-            if(infoBean.isInSd){
-                vh.location.setText("sd卡");
-            }else{
-                vh.location.setText("外部存储");
-            }
 
             // 处理小标题：
             // 将用户的第一个，和系统的第一个条目，显示小标题
@@ -312,26 +321,15 @@ public class SelectAppActivity extends Activity{
     private class ViewHolder{
 
         public TextView subTitle;
-        public TextView location;
-        public TextView size;
+
         public TextView name;
         public ImageView icon;
+        public CheckBox checkBox;
 
     }
 
 
     private void initTitle() {
-
-//		TextView tvSpaceSd = (TextView) findViewById(R.id.tv_space_sd);
-//		long freeSpaceSd = Environment.getExternalStorageDirectory().getFreeSpace();
-//		String freeSpaceSdStr = Formatter.formatFileSize(this, freeSpaceSd);
-//		tvSpaceSd.setText("SD卡空间:"+freeSpaceSdStr);
-//
-//		// 内部存储
-//		TextView tvSpaceInner = (TextView) findViewById(R.id.tv_space_inner);
-//		long freeSpaceInner = Environment.getDataDirectory().getFreeSpace();
-//		String freeSpaceInnerStr = Formatter.formatFileSize(this, freeSpaceInner);
-//		tvSpaceInner.setText("内部存储:"+freeSpaceInnerStr);
 
     }
 

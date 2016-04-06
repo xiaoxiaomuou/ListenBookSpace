@@ -36,4 +36,9 @@ public class AppInfoBean {
      * APK文件的路径
      */
     public String apkPath;
+
+    /**
+     * 判断当前条目是否被选中
+     */
+    public boolean isSelect ;
 }
