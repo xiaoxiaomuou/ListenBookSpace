@@ -22,7 +22,7 @@ public class DesktopLayout extends LinearLayout{
 
         // 显示的ICON
         ImageView mImageView = new ImageView(context);
-        mImageView.setImageResource(R.mipmap.ic_launcher);
+        mImageView.setImageResource(R.mipmap.logo);
         addView(mImageView, mLayoutParams);
 
         // 显示的文字
