@@ -45,6 +45,12 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
     private DesktopLayout mDesktopLayout;
 
     private long starttime;
+
+    /**
+     * 悬浮窗是否显示着
+     */
+    private Boolean isShow = false;
+
     /**
      * 管理员口令
      */
@@ -61,7 +67,11 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
      * 创建悬浮窗体
      */
     private void createDesktopLayout() {
-        mDesktopLayout = new DesktopLayout(this);
+
+        if(!isShow && mDesktopLayout == null){
+
+            mDesktopLayout = new DesktopLayout(this);
+        }
 
 
         /**
@@ -192,8 +202,10 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
      */
     private void showDesk() {
         // 由 windowManager 将某个view 添加至屏幕中
-        mWindowManager.addView(mDesktopLayout, mLayoutParams);
+        if(isShow){
 
+            mWindowManager.addView(mDesktopLayout, mLayoutParams);
+        }
         //默认是中心对齐
         //mLayoutParams.gravity = Gravity.LEFT + Gravity.TOP;//左上角对齐
 
@@ -210,6 +222,7 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
      * 关闭DesktopLayout
      */
     private void closeDesk() {
+        Log.i("closeDesk","进来关闭"+mDesktopLayout+"窗体了");
         mWindowManager.removeView(mDesktopLayout);
 
     }
@@ -275,7 +288,16 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
     }
 
     public void fxcClick(View view){
-        showDesk();
+
+        isShow = !isShow;
+
+        Log.i("fxcClick",isShow+"啊");
+        if(isShow){
+            showDesk();
+        }else{
+            Log.i("fxcClick",isShow+"啊为何没关闭");
+            closeDesk();
+        }
     }
 
     public void ivClick(View view){
@@ -445,6 +467,7 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
      */
     public void startAPP(String appPackageName){
         try{
+
             Intent intent = pm.getLaunchIntentForPackage(appPackageName);
             startActivity(intent);
         }catch(Exception e){
@@ -452,11 +475,6 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
         }
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mWindowManager.removeView(mDesktopLayout);
-    }
 }
 
 

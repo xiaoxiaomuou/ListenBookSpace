@@ -5,7 +5,6 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
-import android.os.SystemClock;
 
 import net.aiweimob.www.starter.bean.AppInfoBean;
 
@@ -79,8 +78,6 @@ public class AppUtils {
             }
 
         }
-
-        SystemClock.sleep(30); // 模拟耗时的操作
 
         return appList;
     }

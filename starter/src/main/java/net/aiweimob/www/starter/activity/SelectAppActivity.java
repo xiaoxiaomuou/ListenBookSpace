@@ -202,7 +202,6 @@ public class SelectAppActivity extends Activity{
     private ProgressDialog proDlg;
 
     private void fillData() {
-      //  proDlg.show();
 
         new Thread(){
             public void run() {
