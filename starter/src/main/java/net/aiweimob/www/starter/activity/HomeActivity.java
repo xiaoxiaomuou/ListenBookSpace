@@ -3,16 +3,21 @@ package net.aiweimob.www.starter.activity;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.graphics.PixelFormat;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -26,10 +31,188 @@ import net.aiweimob.www.starter.R;
 import net.aiweimob.www.starter.utils.MyConstace;
 import net.aiweimob.www.starter.utils.MyUtils;
 import net.aiweimob.www.starter.utils.PrefUtils;
+import net.aiweimob.www.starter.view.DesktopLayout;
 
 public class HomeActivity extends Activity implements AdapterView.OnItemClickListener {
 
+    /**
+     * 高优先级的窗体控件
+     */
+    private WindowManager mWindowManager;
+
+    private WindowManager.LayoutParams mLayoutParams;
+
+    private DesktopLayout mDesktopLayout;
+
+    private long starttime;
+    /**
+     * 管理员口令
+     */
     private static final String MyPwd = "jie";
+
+    /**
+     * 是否是拖动，
+     * 如果按下，移动，距离小于10个象素，我们认为是点击的动作，按点击的逻辑处理
+     * 如果超过10个像素，我们认为发生了拖动，按拖动的逻辑处理
+     */
+    private boolean isDrop;
+
+    /**
+     * 创建悬浮窗体
+     */
+    private void createDesktopLayout() {
+        mDesktopLayout = new DesktopLayout(this);
+
+
+        /**
+         * 窗体的点击事件
+         */
+        mDesktopLayout.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isDrop){
+                    Log.i("Onclick", "onclick不执行");
+                    return;
+                }
+                Log.i("Onclick", "onclick执行了");
+                restartMyapp();
+            }
+        });
+
+
+        // 读取保存的数据，初始化位置
+        mLayoutParams.x= sp.getInt("params_x", 0);
+        mLayoutParams.y= sp.getInt("params_y", 0);
+
+        mDesktopLayout.setOnTouchListener(new View.OnTouchListener() {
+
+            /**
+             * down 事件的X坐标
+             */
+            private int downX;
+            /**
+             * 上一个事件中的X坐标
+             */
+            private int lastX;
+            /**
+             * 上一个事件中的Y坐标
+             */
+            private int lastY;
+            @Override
+            /**
+             * mDesktopLayout 时，不断调用此方法
+             * 如果消费了事件，必须返回true
+             */
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+
+                        lastX = (int) event.getRawX();
+                        lastY = (int) event.getRawY();
+
+                        isDrop = false; // 按下时，肯定没有拖动
+
+                        break;
+                    case MotionEvent.ACTION_UP:
+
+                        // 抬起手指时， 保存控件当前的位置
+                        sp.edit().putInt("params_x", mLayoutParams.x).commit();
+                        sp.edit().putInt("params_y", mLayoutParams.y).commit();
+
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        System.out.println("ACTION_MOVE========");
+                        // 二：移动手指时，记录移动时的坐标点moveX,moveY求得手指在屏幕移动的距离
+
+                        int moveX = (int) event.getRawX();
+                        int moveY = (int) event.getRawY();
+
+                        int disX = moveX - lastX; // 此处应该求的的是二个相领事件之间的距离
+                        int disY = moveY - lastY;
+
+                        // 移动距离超过15象素，认为发生了拖动
+                        if(Math.abs(disX)> 15 || Math.abs(disY)>15){
+                            Log.i("Move",disX+"--大于15了--");
+                            isDrop = true;
+                        }
+
+                        // 三: 让控件同样移动disX,和disY的距离
+
+                        mLayoutParams.x+=disX;
+                        Log.i("Paramsx",mLayoutParams.x+"");
+                        mLayoutParams.y+=disY;
+
+                        mWindowManager.updateViewLayout(mDesktopLayout, mLayoutParams); // 更新view在屏幕的位置
+                        Log.i("update",mLayoutParams.x+"----"+mLayoutParams.y);
+
+                        // 四，让downX downY 改变为当前的moveX,moveY,以便于获得二个相领事件之间的距离
+                        lastX = moveX;
+                        lastY = moveY;
+
+                        break;
+                }
+                return false;
+            }
+        });
+    }
+
+    /**
+     * 设置WindowManager
+     */
+    private void createWindowManager() {
+        // 取得系统窗体
+        mWindowManager = (WindowManager) getApplicationContext()
+                .getSystemService(WINDOW_SERVICE);
+
+        // 窗体的布局样式
+        mLayoutParams = new WindowManager.LayoutParams();
+
+        // 设置窗体显示类型——TYPE_SYSTEM_ALERT(系统提示)
+        mLayoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
+
+        // 设置窗体焦点及触摸：
+        // FLAG_NOT_FOCUSABLE(不能获得按键输入焦点)
+        mLayoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+                | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
+
+        // 设置显示的模式
+        mLayoutParams.format = PixelFormat.RGBA_8888;
+
+        // 设置对齐的方法
+        mLayoutParams.gravity = Gravity.TOP | Gravity.LEFT;
+
+        // 设置窗体宽度和高度
+        mLayoutParams.width = WindowManager.LayoutParams.WRAP_CONTENT;
+        mLayoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+    }
+
+    /**
+     * 显示DesktopLayout
+     */
+    private void showDesk() {
+        // 由 windowManager 将某个view 添加至屏幕中
+        mWindowManager.addView(mDesktopLayout, mLayoutParams);
+
+        //默认是中心对齐
+        //mLayoutParams.gravity = Gravity.LEFT + Gravity.TOP;//左上角对齐
+
+    }
+
+    /**
+     * 重启我的应用
+     */
+    private void restartMyapp() {
+        startAPP("net.aiweimob.www.starter");
+    }
+
+    /**
+     * 关闭DesktopLayout
+     */
+    private void closeDesk() {
+        mWindowManager.removeView(mDesktopLayout);
+
+    }
 
     /**
      * 包的管理器 PackageManager;
@@ -50,12 +233,27 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
     String[] pageNames = new String[]{""};
 
     private EditText et_text_pwd;
+    private Button btnXfc;
+
+    private SharedPreferences sp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        sp = getSharedPreferences("config", MODE_PRIVATE);
+
+        createWindowManager();
+        createDesktopLayout();
         act = this;
+
+        btnXfc = (Button) findViewById(R.id.btn_xfc);
+/*        btnXfc.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDesk();
+            }
+        });*/
 
         pm = act.getPackageManager();//获得了包管理器
 
@@ -74,6 +272,10 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
         adapter.notifyDataSetChanged();
 
         gridView.setOnItemClickListener(this);
+    }
+
+    public void fxcClick(View view){
+        showDesk();
     }
 
     public void ivClick(View view){
@@ -118,7 +320,7 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
          */
         String packname = pageNames[position];
         Log.i("position",packname+position);
-        
+
         startAPP(packname);
     }
 
@@ -250,6 +452,11 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mWindowManager.removeView(mDesktopLayout);
+    }
 }
 
 

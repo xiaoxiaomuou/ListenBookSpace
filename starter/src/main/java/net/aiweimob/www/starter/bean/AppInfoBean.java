@@ -3,6 +3,7 @@ package net.aiweimob.www.starter.bean;
 import android.graphics.drawable.Drawable;
 
 /**
+ * appinfo对象
  * Created by Administrator on 2016/4/5.
  */
 public class AppInfoBean {

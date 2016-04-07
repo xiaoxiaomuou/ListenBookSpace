@@ -33,19 +33,13 @@ public class SplashActivity extends Activity {
         // 动画集合
         AnimationSet set = new AnimationSet(false);
 
-/*        // 旋转动画
-        RotateAnimation rotate = new RotateAnimation(0, 360,
-                Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
-                0.5f);
-        rotate.setDuration(1000);// 动画时间
-        rotate.setFillAfter(true);// 保持动画状态*/
 
         // 缩放动画
         ScaleAnimation scale = new ScaleAnimation(0, 1, 0, 1,
                 Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
                 0.5f);
-        scale.setDuration(1000);// 动画时间
-        scale.setFillAfter(true);// 保持动画状态
+        scale.setDuration(500);// 动画时间
+        scale.setFillAfter(false);// 保持动画状态
 
         // 渐变动画
         AlphaAnimation alpha = new AlphaAnimation(0, 1);
