@@ -263,6 +263,8 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
         createDesktopLayout();
         act = this;
 
+        Log.i("onResume","oncreate执行了");
+
         pm = act.getPackageManager();//获得了包管理器
 
         ivShezhi = (ImageView) findViewById(R.id.iv_sz);
@@ -286,7 +288,7 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
         super.onResume();
         // 通知gridView 数据发生变化了，就会将屏幕显示的每个条目都刷新一次，即，调用getView方法
 
-        Log.i("fxcClick","fxcClick触发了onResume");
+        Log.i("onResume","onResume执行了");
         adapter.notifyDataSetChanged();
     }
 

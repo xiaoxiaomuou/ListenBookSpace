@@ -11,24 +11,33 @@
         android:layout_height="wrap_content"
         android:background="#7B68EE"
         >
+        <ImageView
+            android:id="@+id/ivSystem"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/settings"
+            />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:textColor="#000000"
+            android:textColor="#B22222"
             android:textSize="16sp"
             android:gravity="center"
             android:text="请选择应用" />
-        <Button
-            android:id="@+id/btn_finish"
-            android:onClick="selectFinish"
-            android:background="#00008B"
+
+        <ImageView
+            android:id="@+id/iv_finish"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
-            android:text="完成"
-            android:textColor="#FDF5E6"
             android:layout_alignParentRight="true"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:src="@mipmap/complete"
+            />
 
 
     </RelativeLayout>

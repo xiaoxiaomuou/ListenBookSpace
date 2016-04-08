@@ -5,13 +5,13 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -46,12 +46,18 @@ public class SelectAppActivity extends Activity{
     /**
      * selectFinish 选择完成的按钮
      */
-    private Button btnFinish;
+    private ImageView ivFinish;
 
     /**
      * 固定的小标题
      */
     private TextView tvSubTitle;
+
+    /**
+     * 系统设置启动按钮
+     * @param savedInstanceState
+     */
+    private ImageView ivSystem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,14 +69,16 @@ public class SelectAppActivity extends Activity{
 
         tvSubTitle = (TextView) findViewById(R.id.tv_sub_title);
 
-        btnFinish = (Button) findViewById(R.id.btn_finish);
+        ivFinish = (ImageView) findViewById(R.id.iv_finish);
+
+        ivSystem = (ImageView) findViewById(R.id.ivSystem);
 
         ctx = this;
 
         initTitle();
 
         proDlg  = new ProgressDialog(this);
-        proDlg.setMessage("努力获取Ing....请稍候...");
+        proDlg.setMessage("努力获取中....请稍候...");
 
         fillData();
 
@@ -83,6 +91,42 @@ public class SelectAppActivity extends Activity{
         // 下面一句，就只能记下来了，否则是收不到广播的。
         filter.addDataScheme("package");
         registerReceiver(uninstallReceiver, filter);*/
+        /**
+         * 完成按钮的点击事件
+         */
+        ivFinish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Log.i("ivFinish","ivFinish被点击了");
+                /**
+                 * 先清空原本的sp
+                 */
+                PrefUtils.setString(ctx,MyConstace.key_is_select_app,"");
+
+
+                /**
+                 * 保存选择的程序包名到sp
+                 */
+                saveToSp();
+
+                /**
+                 * 跳转到HomeActivity
+                 */
+                Intent intent = new Intent(ctx,HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        ivSystem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Log.i("ivFinish","ivSystem被点击了");
+                Intent intent = new Intent(Settings.ACTION_SETTINGS);//系统设置界面
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -161,26 +205,6 @@ public class SelectAppActivity extends Activity{
             }
         });
 
-    }
-    /**
-     * 完成按钮的点击事件
-     */
-    public void selectFinish(View view){
-        /**
-         * 先清空原本的sp
-         */
-        PrefUtils.setString(ctx,MyConstace.key_is_select_app,"");
-
-        /**
-         * 保存选择的程序包名到sp
-         */
-        saveToSp();
-
-        /**
-         * 跳转到HomeActivity
-         */
-        Intent intent = new Intent(this,HomeActivity.class);
-        startActivity(intent);
     }
 
     /**
