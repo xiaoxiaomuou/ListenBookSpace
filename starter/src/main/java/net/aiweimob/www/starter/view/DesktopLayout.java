@@ -13,8 +13,11 @@ import net.aiweimob.www.starter.R;
  * Created by Administrator on 2016/4/7.
  */
 public class DesktopLayout extends LinearLayout{
-    public DesktopLayout(Context context) {
+    private static DesktopLayout sInstance;
+    private Context mContext;
+    private DesktopLayout(Context context) {
         super(context);
+        this.mContext = context;
         setOrientation(LinearLayout.HORIZONTAL);
         LayoutParams mLayoutParams = new LayoutParams(
                 LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
@@ -33,5 +36,15 @@ public class DesktopLayout extends LinearLayout{
         mTextView.setGravity(Gravity.CENTER);
         addView(mTextView, mLayoutParams);
 
+    }
+
+    // 注意这是private 只供内部调用
+    public static synchronized DesktopLayout getInstance(Context context)
+    {
+        if (sInstance == null)
+        {
+            sInstance = new DesktopLayout(context.getApplicationContext());
+        }
+        return sInstance;
     }
 }

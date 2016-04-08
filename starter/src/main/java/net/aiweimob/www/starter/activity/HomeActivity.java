@@ -70,7 +70,8 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
 
         if(!isShow && mDesktopLayout == null){
 
-            mDesktopLayout = new DesktopLayout(this);
+            Log.i("createDesk","act实例化了"+act);
+            mDesktopLayout = DesktopLayout.getInstance(this);
         }
 
 
@@ -255,7 +256,6 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
         setContentView(R.layout.activity_main);
 
         sp = getSharedPreferences("config", MODE_PRIVATE);
-
         createWindowManager();
         createDesktopLayout();
         act = this;
@@ -281,10 +281,16 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
         adapter = new MyAdapter();
         gridView.setAdapter(adapter);
 
-        //刷新页面
-        adapter.notifyDataSetChanged();
-
         gridView.setOnItemClickListener(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // 通知gridView 数据发生变化了，就会将屏幕显示的每个条目都刷新一次，即，调用getView方法
+
+        Log.i("onResume","onResume执行了");
+        adapter.notifyDataSetChanged();
     }
 
     public void fxcClick(View view){
