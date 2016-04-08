@@ -9,7 +9,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#808080"
+        android:background="#7B68EE"
         >
         <TextView
             android:layout_width="match_parent"
@@ -21,9 +21,11 @@
         <Button
             android:id="@+id/btn_finish"
             android:onClick="selectFinish"
+            android:background="#00008B"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
             android:text="完成"
+            android:textColor="#FDF5E6"
             android:layout_alignParentRight="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -43,7 +45,7 @@
             android:id="@+id/tv_sub_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FFFAF0"
+            android:background="#6495ED"
             android:textColor="#000000"
             android:padding="3dp"
             android:text="应用类别"

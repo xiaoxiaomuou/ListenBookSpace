@@ -10,24 +10,24 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <Button
+<!--        <Button
             android:id="@+id/btn_xfc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="fxcClick"
             android:text="悬浮窗"
             android:paddingLeft="20dp"
             android:layout_alignParentLeft="true"
             android:layout_centerInParent="true"
-            />
+            />-->
         <TextView
             android:id="@+id/tv"
-            android:layout_centerInParent="true"
+            android:layout_alignParentRight="true"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:gravity="center"
-            android:text="启动页面"
-            android:textSize="22sp" />
+            android:text="新湖南"
+            android:textColor="#DC143C"
+            android:textSize="19sp" />
 
         <ImageView
             android:id="@+id/iv_sz"

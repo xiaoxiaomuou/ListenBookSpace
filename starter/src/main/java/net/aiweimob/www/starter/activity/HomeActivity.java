@@ -178,6 +178,11 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
         // 窗体的布局样式
         mLayoutParams = new WindowManager.LayoutParams();
 
+/*        //透明效果
+        mLayoutParams.format = PixelFormat.RGBA_8888; */
+
+        mLayoutParams.alpha = 0.5f;
+
         // 设置窗体显示类型——TYPE_SYSTEM_ALERT(系统提示)
         mLayoutParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
 
@@ -203,10 +208,8 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
      */
     private void showDesk() {
         // 由 windowManager 将某个view 添加至屏幕中
-        if(isShow){
 
             mWindowManager.addView(mDesktopLayout, mLayoutParams);
-        }
         //默认是中心对齐
         //mLayoutParams.gravity = Gravity.LEFT + Gravity.TOP;//左上角对齐
 
@@ -260,14 +263,6 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
         createDesktopLayout();
         act = this;
 
-        btnXfc = (Button) findViewById(R.id.btn_xfc);
-/*        btnXfc.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDesk();
-            }
-        });*/
-
         pm = act.getPackageManager();//获得了包管理器
 
         ivShezhi = (ImageView) findViewById(R.id.iv_sz);
@@ -282,6 +277,8 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
         gridView.setAdapter(adapter);
 
         gridView.setOnItemClickListener(this);
+
+        showDesk();
     }
 
     @Override
@@ -289,22 +286,22 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
         super.onResume();
         // 通知gridView 数据发生变化了，就会将屏幕显示的每个条目都刷新一次，即，调用getView方法
 
-        Log.i("onResume","onResume执行了");
+        Log.i("fxcClick","fxcClick触发了onResume");
         adapter.notifyDataSetChanged();
     }
 
-    public void fxcClick(View view){
+/*    public void onClickXf(View view){
 
         isShow = !isShow;
 
-        Log.i("fxcClick",isShow+"啊");
         if(isShow){
+            Log.i("fxcClick",isShow+"啊");
             showDesk();
         }else{
-            Log.i("fxcClick",isShow+"啊为何没关闭");
+            Log.i("fxcClick",isShow+"深深的bug");
             closeDesk();
         }
-    }
+    }*/
 
     public void ivClick(View view){
 

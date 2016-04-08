@@ -21,11 +21,12 @@ public class DesktopLayout extends LinearLayout{
         setOrientation(LinearLayout.HORIZONTAL);
         LayoutParams mLayoutParams = new LayoutParams(
                 LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+
         setLayoutParams(mLayoutParams);
 
         // 显示的ICON
         ImageView mImageView = new ImageView(context);
-        mImageView.setImageResource(R.mipmap.logo);
+        mImageView.setImageResource(R.mipmap.logo2);
         addView(mImageView, mLayoutParams);
 
         // 显示的文字

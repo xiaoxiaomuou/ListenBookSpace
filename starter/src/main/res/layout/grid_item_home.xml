@@ -16,6 +16,6 @@
         android:text="app名字"
         android:textSize="18sp"
         android:id="@+id/app_name_grid_item"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         />
 </LinearLayout>

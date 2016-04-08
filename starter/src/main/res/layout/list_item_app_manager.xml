@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="应用分类"
-        android:background="#FFFAF0"
+        android:background="#6495ED"
         android:textColor="#000000"
         android:id="@+id/tv_sub_title_list_item"
         android:textSize="18sp"
@@ -30,9 +30,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_toRightOf="@id/iv_icon_list_item"
-            android:text="应用名称"
+            android:text="颜色"
             android:layout_centerVertical="true"
-            android:textColor="#808080"
+            android:textColor="#FFFFFF"
             android:textSize="22sp" />
 
         <!--   android:clickable="false" -->
