@@ -49,7 +49,7 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
     /**
      * 悬浮窗是否显示着
      */
-    private Boolean isShow = false;
+    private Boolean isShow;
 
     /**
      * 管理员口令
@@ -68,11 +68,8 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
      */
     private void createDesktopLayout() {
 
-        if(!isShow && mDesktopLayout == null){
-
             Log.i("createDesk","act实例化了"+act);
             mDesktopLayout = DesktopLayout.getInstance(this);
-        }
 
 
         /**
@@ -82,10 +79,10 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
             @Override
             public void onClick(View v) {
                 if(isDrop){
-                    Log.i("Onclick", "onclick不执行");
+                    Log.i("mDesktopLayout", "onclick不执行");
                     return;
                 }
-                Log.i("Onclick", "onclick执行了");
+                Log.i("mDesktopLayout", "onclick执行了");
                 restartMyapp();
             }
         });
@@ -207,24 +204,21 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
      * 显示DesktopLayout
      */
     private void showDesk() {
-        // 由 windowManager 将某个view 添加至屏幕中
 
             mWindowManager.addView(mDesktopLayout, mLayoutParams);
-        //默认是中心对齐
-        //mLayoutParams.gravity = Gravity.LEFT + Gravity.TOP;//左上角对齐
 
     }
+
+
 
     /**
      * 重启我的应用
      */
     private void restartMyapp() {
-        startAPP("net.aiweimob.www.starter");
+        closeDesk();
+        startAPP("net.aiweimob.www.starter");//com.tencent.qqmusic
     }
 
-    /**
-     * 关闭DesktopLayout
-     */
     private void closeDesk() {
         Log.i("closeDesk","进来关闭"+mDesktopLayout+"窗体了");
         mWindowManager.removeView(mDesktopLayout);
@@ -259,6 +253,7 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
         setContentView(R.layout.activity_main);
 
         sp = getSharedPreferences("config", MODE_PRIVATE);
+
         createWindowManager();
         createDesktopLayout();
         act = this;
@@ -281,6 +276,7 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
         gridView.setOnItemClickListener(this);
 
         showDesk();
+
     }
 
     @Override
@@ -292,18 +288,6 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
         adapter.notifyDataSetChanged();
     }
 
-/*    public void onClickXf(View view){
-
-        isShow = !isShow;
-
-        if(isShow){
-            Log.i("fxcClick",isShow+"啊");
-            showDesk();
-        }else{
-            Log.i("fxcClick",isShow+"深深的bug");
-            closeDesk();
-        }
-    }*/
 
     public void ivClick(View view){
 
@@ -390,6 +374,8 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
              * 应用程序的包名
              */
             String packname = pageNames[position];
+
+            Log.i("packname",packname);
             /**
              * 设置图标 和 应用名称
              */
@@ -474,6 +460,7 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
         try{
 
             Intent intent = pm.getLaunchIntentForPackage(appPackageName);
+            Log.i("startAPP",appPackageName+"准备启动");
             startActivity(intent);
         }catch(Exception e){
             Toast.makeText(this, "还木有安装", Toast.LENGTH_LONG).show();
