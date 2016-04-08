@@ -19,7 +19,8 @@
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.HOME" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -28,6 +29,9 @@
             android:name=".activity.SelectAppActivity"
             android:label="@string/title_activity_select_app"
             ></activity>
+
+        <service android:name=".service.Myservice"></service>
+
     </application>
 
 </manifest>

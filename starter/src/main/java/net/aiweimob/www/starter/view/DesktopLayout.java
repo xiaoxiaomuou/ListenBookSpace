@@ -26,12 +26,12 @@ public class DesktopLayout extends LinearLayout{
 
         // 显示的ICON
         ImageView mImageView = new ImageView(context);
-        mImageView.setImageResource(R.mipmap.logo2);
+        mImageView.setImageResource(R.mipmap.logo1);
         addView(mImageView, mLayoutParams);
 
         // 显示的文字
         TextView mTextView = new TextView(context);
-        mTextView.setText("...");
+//        mTextView.setText("...");
         mTextView.setTextColor(Color.rgb(255, 236, 139));
         mTextView.setTextSize(30);
         mTextView.setGravity(Gravity.CENTER);
