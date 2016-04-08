@@ -228,6 +228,11 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
         //closeDesk();
         startAPP("net.aiweimob.www.starter");//com.tencent.qqmusic
 //        startAPP("com.hwang.listenbook");//com.tencent.qqmusic
+
+/*        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.setComponent(new ComponentName("net.aiweimob.www.starter","net.aiweimob.www.starter.activity.HomeActivity"));
+        startActivity(intent);*/
+
     }
 
     private void closeDesk() {
