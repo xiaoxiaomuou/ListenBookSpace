@@ -113,6 +113,7 @@ public class SelectAppActivity extends Activity{
                 /**
                  * 跳转到HomeActivity
                  */
+
                 Intent intent = new Intent(ctx,HomeActivity.class);
                 startActivity(intent);
             }

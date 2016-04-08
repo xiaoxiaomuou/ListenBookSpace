@@ -205,18 +205,29 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
      */
     private void showDesk() {
 
+        isShow = PrefUtils.getBoolean(act,MyConstace.key_is_show,false);
+        Log.i("isShow","isShow的值是"+isShow);
+
+        if(!isShow){
             mWindowManager.addView(mDesktopLayout, mLayoutParams);
+            PrefUtils.setBoolean(act,MyConstace.key_is_show,true);
+        }
 
     }
 
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+//        PrefUtils.setBoolean(act, MyConstace.key_is_show, false);
+    }
 
     /**
      * 重启我的应用
      */
     private void restartMyapp() {
-        closeDesk();
+        //closeDesk();
         startAPP("net.aiweimob.www.starter");//com.tencent.qqmusic
+//        startAPP("com.hwang.listenbook");//com.tencent.qqmusic
     }
 
     private void closeDesk() {
@@ -458,7 +469,6 @@ public class HomeActivity extends Activity implements AdapterView.OnItemClickLis
      */
     public void startAPP(String appPackageName){
         try{
-
             Intent intent = pm.getLaunchIntentForPackage(appPackageName);
             Log.i("startAPP",appPackageName+"准备启动");
             startActivity(intent);
