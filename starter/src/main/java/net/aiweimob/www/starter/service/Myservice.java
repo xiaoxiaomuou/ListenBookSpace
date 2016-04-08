@@ -13,8 +13,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 
-import net.aiweimob.www.starter.utils.MyConstace;
-import net.aiweimob.www.starter.utils.PrefUtils;
 import net.aiweimob.www.starter.view.DesktopLayout;
 
 /**
@@ -57,7 +55,7 @@ public class Myservice extends Service{
     /**
      * 悬浮窗是否显示着
      */
-    private Boolean isShow;
+//    private Boolean isShow;
 
     /**
      * 是否是拖动，
@@ -213,14 +211,14 @@ public class Myservice extends Service{
      */
     private void showDesk() {
 
-        isShow = PrefUtils.getBoolean(act, MyConstace.key_is_show, false);
+/*        isShow = PrefUtils.getBoolean(act, MyConstace.key_is_show, false);
         Log.i("isShow","isShow的值是"+isShow);
 
         if(!isShow){
-            mWindowManager.addView(mDesktopLayout, mLayoutParams);
             PrefUtils.setBoolean(act,MyConstace.key_is_show,true);
-        }
+        }*/
 
+        mWindowManager.addView(mDesktopLayout, mLayoutParams);
     }
     /**
      * 重启我的应用
